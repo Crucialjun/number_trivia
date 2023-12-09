@@ -4,13 +4,13 @@ import 'package:number_trivia/core/usecases/usecase.dart';
 import 'package:number_trivia/features/domain/entities/number_trivia.dart';
 import 'package:number_trivia/features/domain/repositories/number_trivia_repository.dart';
 
-class GetConcreteNumberTriviaUsecase implements UseCases<NumberTrivia, int> {
+class GetRandomNumberTriviaUsecase with UseCases<NumberTrivia, NoParams> {
   final NumberTriviaRepository repository;
 
-  GetConcreteNumberTriviaUsecase({required this.repository});
+  GetRandomNumberTriviaUsecase({required this.repository});
 
   @override
-  Future<Either<Failure, NumberTrivia>> call(int number) async {
-    return await repository.getConcreteNumberTrivia(number);
+  Future<Either<Failure, NumberTrivia>> call(NoParams params) async {
+    return await repository.getRandomNumberTrivia();
   }
 }
