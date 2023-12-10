@@ -8,8 +8,6 @@ import 'package:number_trivia/features/number_trivia/domain/usecases/get_concret
 
 import 'get_concrete_number_trivia_usecase_test.mocks.dart';
 
-
-
 @GenerateMocks([NumberTriviaRepository])
 void main() {
   late GetConcreteNumberTriviaUsecase usecase;
@@ -30,7 +28,7 @@ void main() {
 
     // act
 
-    final res = await usecase.execute(number: tNumber);
+    final res = await usecase(tNumber);
     // assert
 
     expect(res, const Right(tNumberTrivia));
