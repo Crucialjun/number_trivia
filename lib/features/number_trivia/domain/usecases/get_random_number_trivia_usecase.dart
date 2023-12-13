@@ -3,7 +3,7 @@ import 'package:number_trivia/core/error/failures.dart';
 import 'package:number_trivia/core/usecases/usecase.dart';
 
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia.dart';
-import 'package:number_trivia/features/number_trivia/domain/entities/repositories/number_trivia_repository.dart';
+import 'package:number_trivia/features/number_trivia/domain/repositories/number_trivia_repository.dart';
 
 class GetRandomNumberTriviaUsecase with UseCases<NumberTrivia, NoParams> {
   final NumberTriviaRepository repository;

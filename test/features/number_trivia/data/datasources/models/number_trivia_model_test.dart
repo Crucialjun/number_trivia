@@ -9,7 +9,7 @@ import '../../../../../fixtures/fixture_reader.dart';
 
 
 void main() {
-  const tNumberTriviaModel = NumberTriviaModel(number: 1, text: "test text");
+  const tNumberTriviaModel = NumberTriviaModel(number: 1, text: "Test text");
 
   test('should be a subclass of NumberTrivia entity', () async {
     // assert
@@ -26,6 +26,31 @@ void main() {
 
       //assert
       expect(result, tNumberTriviaModel);
+    });
+
+     test('should return a valid when the Json number is an regarded as a double', () async {
+      //arrange
+      final Map<String, dynamic> jsonMap = json.decode(fixture('trivia_double.json'));
+
+      //act
+      final result = NumberTriviaModel.fromJson(jsonMap);
+
+      //assert
+      expect(result, tNumberTriviaModel);
+    });
+  });
+
+  group("toJson", () {
+    test('should return a JSON map containing the proper data', () async {
+      //act
+      final result = tNumberTriviaModel.toJson();
+
+      //assert
+      final expectedMap = {
+        "text": "Test text",
+        "number": 1,
+      };
+      expect(result, expectedMap);
     });
   });
 }

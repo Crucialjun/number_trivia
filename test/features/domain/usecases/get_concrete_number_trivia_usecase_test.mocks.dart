@@ -10,7 +10,7 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:number_trivia/core/error/failures.dart' as _i3;
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia.dart'
     as _i4;
-import 'package:number_trivia/features/number_trivia/domain/entities/repositories/number_trivia_repository.dart'
+import 'package:number_trivia/features/number_trivia/domain/repositories/number_trivia_repository.dart'
     as _i5;
 
 // ignore_for_file: type=lint
