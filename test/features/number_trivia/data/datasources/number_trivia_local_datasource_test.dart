@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:number_trivia/core/error/exceptions.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_datasource.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,8 +41,8 @@ void main() {
       // act
       final call = dataSource.getLastNumberTrivia;
       // assert
-      expect(() => call(), throwsA(isA<CacheException>()));
+      expect(() => call(), throwsA(isA<CacheExceptions>()));
     });
-  });
+  
   });
 }
