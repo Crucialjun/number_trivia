@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 
 import 'package:mockito/annotations.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/remote/number_trivia_remote_datasource.dart';
@@ -16,7 +17,7 @@ void main() {
 
   setUp(() {
     mockDio = MockDio();
-    //dataSource = GetIt.instance<NumberTriviaRemoteDataSource>();
+    dataSource = GetIt.instance<NumberTriviaRemoteDataSource>();
   });
 
 
