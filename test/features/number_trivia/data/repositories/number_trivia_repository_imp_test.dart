@@ -6,7 +6,8 @@ import 'package:number_trivia/core/error/exceptions.dart';
 import 'package:number_trivia/core/error/failures.dart';
 import 'package:number_trivia/core/network/network_info.dart';
 import 'package:number_trivia/features/number_trivia/data/datasources/local/number_trivia_local_datasource.dart';
-import 'package:number_trivia/features/number_trivia/data/datasources/remote/number_trivia_remote_datasource.dart';
+import 'package:number_trivia/features/number_trivia/data/datasources/remote/i_number_trivia_remote_datasource.dart';
+
 import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
 import 'package:number_trivia/features/number_trivia/data/repositories/number_trivia_repository_imp.dart';
 import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia.dart';
@@ -14,15 +15,15 @@ import 'package:number_trivia/features/number_trivia/domain/entities/number_triv
 import 'number_trivia_repository_imp_test.mocks.dart';
 
 @GenerateMocks(
-    [NumberTriviaRemoteDataSource, NumberTriviaLocalDataSource, NetworkInfo])
+    [INumberTriviaRemoteDataSource, NumberTriviaLocalDataSource, NetworkInfo])
 void main() {
   late NumberTriviaRepositoryImpl repository;
-  late MockNumberTriviaRemoteDataSource mockNumberTriviaRemoteDataSource;
+  late MockINumberTriviaRemoteDataSource mockNumberTriviaRemoteDataSource;
   late MockNumberTriviaLocalDataSource mockNumberTriviaLocalDataSource;
   late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
-    mockNumberTriviaRemoteDataSource = MockNumberTriviaRemoteDataSource();
+    mockNumberTriviaRemoteDataSource = MockINumberTriviaRemoteDataSource();
     mockNumberTriviaLocalDataSource = MockNumberTriviaLocalDataSource();
     mockNetworkInfo = MockNetworkInfo();
     repository = NumberTriviaRepositoryImpl(

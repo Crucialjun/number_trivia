@@ -9,7 +9,7 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:number_trivia/core/network/network_info.dart' as _i7;
 import 'package:number_trivia/features/number_trivia/data/datasources/local/number_trivia_local_datasource.dart'
     as _i6;
-import 'package:number_trivia/features/number_trivia/data/datasources/remote/number_trivia_remote_datasource.dart'
+import 'package:number_trivia/features/number_trivia/data/datasources/remote/i_number_trivia_remote_datasource.dart'
     as _i4;
 import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart'
     as _i3;
@@ -50,12 +50,12 @@ class _FakeNumberTriviaModel_1 extends _i1.SmartFake
         );
 }
 
-/// A class which mocks [NumberTriviaRemoteDataSource].
+/// A class which mocks [INumberTriviaRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockNumberTriviaRemoteDataSource extends _i1.Mock
-    implements _i4.NumberTriviaRemoteDataSource {
-  MockNumberTriviaRemoteDataSource() {
+class MockINumberTriviaRemoteDataSource extends _i1.Mock
+    implements _i4.INumberTriviaRemoteDataSource {
+  MockINumberTriviaRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
