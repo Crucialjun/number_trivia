@@ -18,3 +18,10 @@ class ServerFailure extends Failure {
 class CacheFailure extends Failure {
 
 }
+
+class GeneralFailure extends Failure {
+  final String message;
+
+  const GeneralFailure({required this.message});
+
+}

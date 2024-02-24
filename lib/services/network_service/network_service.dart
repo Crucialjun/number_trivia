@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-
 import 'package:logger/logger.dart';
 import 'package:number_trivia/core/api_response.dart';
 import 'package:number_trivia/core/error/failures.dart';
@@ -41,12 +40,12 @@ class NetworkService extends INetworkService {
       if (res.statusCode == 200 || res.statusCode == 201) {
         return ApiResponse(data: res.data);
       }
-      throw Failure(message: res.statusMessage!);
+      throw GeneralFailure(message: res.statusMessage!);
     } on DioException catch (e) {
       throw convertException(e);
     } catch (e) {
       _logger.e(e.toString());
-      throw Failure(message: e.toString());
+      throw GeneralFailure(message: e.toString());
     }
   }
 
@@ -66,12 +65,12 @@ class NetworkService extends INetworkService {
       if (res.statusCode == 200 || res.statusCode == 201) {
         return ApiResponse(data: json.decode(res.data));
       }
-      throw Failure(message: res.statusMessage!);
+      throw GeneralFailure(message: res.statusMessage!);
     } on DioException catch (e) {
       throw convertException(e);
     } catch (e) {
       _logger.e(e.toString());
-      throw Failure(message: e.toString());
+      throw GeneralFailure(message: e.toString());
     }
   }
 
@@ -90,12 +89,14 @@ class NetworkService extends INetworkService {
       if (res.statusCode == 200 || res.statusCode == 201) {
         return ApiResponse(data: res.data);
       }
-      throw Failure(message: res.statusMessage!, extraData: res.toString());
+      throw GeneralFailure(
+        message: res.statusMessage!,
+      );
     } on DioException catch (e) {
       throw convertException(e);
     } catch (e) {
       _logger.e(e.toString());
-      throw Failure(message: e.toString());
+      throw GeneralFailure(message: e.toString());
     }
   }
 
@@ -117,12 +118,12 @@ class NetworkService extends INetworkService {
         _logger.d("Response: ${res.data}");
         return ApiResponse(data: jsonDecode(res.data));
       }
-      throw Failure(message: res.statusMessage!);
+      throw GeneralFailure(message: res.statusMessage!);
     } on DioException catch (e) {
       throw convertException(e);
     } catch (e) {
       _logger.e(e.toString());
-      throw Failure(message: e.toString());
+      throw GeneralFailure(message: e.toString());
     }
   }
 
@@ -149,33 +150,33 @@ class NetworkService extends INetworkService {
       if (res.statusCode == 200 || res.statusCode == 201) {
         return ApiResponse(data: json.decode(res.data));
       }
-      throw Failure(message: res.statusMessage!);
+      throw GeneralFailure(message: res.statusMessage!);
     } on DioException catch (e) {
       throw convertException(e);
     } catch (e) {
       _logger.e(e.toString());
-      throw Failure(message: e.toString());
+      throw GeneralFailure(message: e.toString());
     }
   }
 
   Failure convertException(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
-        return const Failure(message: "Connection Timed Out");
+        return const GeneralFailure(message: "Connection Timed Out");
       case DioExceptionType.sendTimeout:
-        return const Failure(message: "Connection Timed Out");
+        return const GeneralFailure(message: "Connection Timed Out");
       case DioExceptionType.receiveTimeout:
-        return const Failure(message: "Connection Timed Out");
+        return const GeneralFailure(message: "Connection Timed Out");
       case DioExceptionType.badResponse:
-        return Failure(
+        return GeneralFailure(
             message: e.response?.data['message'] ?? e.response?.data['errors']);
       case DioExceptionType.cancel:
-        return Failure(
+        return GeneralFailure(
             message: e.response?.data['message'] ?? e.response?.data['errors']);
       case DioExceptionType.unknown:
-        return const Failure(message: "No Internet Connection");
+        return const GeneralFailure(message: "No Internet Connection");
       default:
-        return const Failure(message: "No Internet Connection");
+        return const GeneralFailure(message: "No Internet Connection");
     }
   }
 }
